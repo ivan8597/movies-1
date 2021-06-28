@@ -24,9 +24,9 @@ const HeaderSection = () => {
             </header>
             <div className="nav-scroller py-1 mb-2">
                 <nav className="nav d-flex justify-content-between">
-                   <Link href="/"><a className="p-2 link-secondary" >Users</a></Link>
-                    <Link href="/template"><a className="p-2 link-secondary" >Template</a></Link>
-                   
+                    <Link href="/"><a className="p-2 link-secondary">Home</a></Link>
+                    <a href="/pattern/movies-list.html" className="p-2 link-secondary" target="_blank">Catalog Example</a>
+                    <a href="/pattern/movie-info-sidebar-right.html" className="p-2 link-secondary" target="_blank">Movie Example</a>
                 </nav>
             </div>
         </>
