@@ -4,18 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "client": "npm run dev --prefix ./client",
-    "server": "npm run dev --prefix ./server"
+    "dev": "nodemon app.js",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ivan8597/movies-1.git"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ivan8597/movies-1/issues"
   },
-  "homepage": "https://github.com/ivan8597/movies-1#readme"
+  "homepage": "https://github.com/ivan8597/movies-1#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.8"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
 }
