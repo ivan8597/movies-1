@@ -4,7 +4,7 @@ const list = async (req, res,next) => {
     try {
         const {skip=0,limit=10} =req.query
       
-        const {year,directors,title}=req.query
+        const {year,directors,title,genre}=req.query
     const criteria = {}
     if (year) {
         criteria.year = year
@@ -14,6 +14,9 @@ const list = async (req, res,next) => {
     }
     if (title) {
         criteria.title = title
+    }
+    if (genre) {
+        criteria.genres = genre
     }
 
     res.json({

@@ -1,3 +1,4 @@
+import Link from "next/link"
 const Line = ({movie,url}) => {
     const {title,poster,imdb:{rating},plot,runtime,year,genres}=movie
 
@@ -17,12 +18,19 @@ const Line = ({movie,url}) => {
             </div>
             <div className="entity-content">
                 <h4 className="entity-title">
-                    <a className="content-link" href={url}>{title}</a>
+                    <Link href={url}><a className="content-link" >{title}</a></Link>
                 </h4>
                 <div className="entity-category">
-                    {genres.map((genre,id)=>{
-                    return  <a className="content-link" href="movies-blocks.html">{genre} </a>
-                    })}
+                {genres.map((genre, index) => {
+                return (
+                  <Link href={`/?genre=${genre}`} key={index}>
+                    <a className="content-link">
+                      {genre}
+                      {index < genres.length - 1 ? ", " : ""}
+                    </a>
+                  </Link>
+                );
+              })}
                 
                 </div>
                 <div className="entity-info">

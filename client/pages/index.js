@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react"
 import MainLayout from "../components/layouts/Main"
-import Preview from "../components/movies/Preview"
+
 import Line from "../components/movies/Line"
+import {useRouter} from "next/router"
 //
 
 const API_URL = "http://localhost:3001"
@@ -12,17 +13,23 @@ const Page = () => {
     const [year,setYear]=useState(years[0])
     const [count,setCount]=useState(0)
     const [page,setPage]=useState(1)
+    const router=useRouter()
+    const {genre}=router.query
     useEffect(()=>{setPage(1)} ,[year])
 
     useEffect(() => {
         const skip=(page-1)*PAGE_LIMIT
-        fetch(`${API_URL}/movies?year=${year}&skip=${skip}&limit=${PAGE_LIMIT}`)
+        let url=`${API_URL}/movies?year=${year}&skip=${skip}&limit=${PAGE_LIMIT}`
+        if(!!genre){
+            url+=`&genre=${genre}`
+        }
+        fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 setItems(data.items);
                 setCount(data.count)
             });
-    }, [year,page]);
+    }, [year,page,genre]);
 
     return (
         <>
