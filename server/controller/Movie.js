@@ -1,4 +1,5 @@
-  
+    
+const Comment = require("../model/mongo/Comment")
 const Movie = require("../model/mongo/Movie")
 const list = async (req, res,next) => {
     try {
@@ -32,7 +33,8 @@ const getById = async (req, res,next) => {
     try {
         console.log(req.params.id)
         res.json({
-            item: await Movie.findById(req.params.id)
+            item: await Movie.findById(req.params.id),
+            comments:await Comment.find({movie_id:req.params.id})
         })
     } catch (error) {
         next(error)
