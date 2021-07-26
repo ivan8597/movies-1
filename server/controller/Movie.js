@@ -5,19 +5,25 @@ const list = async (req, res,next) => {
     try {
         const {skip=0,limit=10} =req.query
       
-        const {year,directors,title,genre}=req.query
+        const {year,director,rating,title,genre}=req.query
     const criteria = {}
     if (year) {
         criteria.year = year
     }
-    if (directors) {
-        criteria.directors = directors
+    if (director) {
+        criteria.directors = director
     }
     if (title) {
         criteria.title = title
     }
     if (genre) {
         criteria.genres = genre
+    }
+    if (rating) {
+        criteria['imdb.rating'] = {
+            $gte:+rating,
+            $lt:+rating+1
+        }
     }
 
     res.json({

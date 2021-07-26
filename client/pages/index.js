@@ -14,7 +14,7 @@ const Page = () => {
     const [count,setCount]=useState(0)
     const [page,setPage]=useState(1)
     const router=useRouter()
-    const {genre,year=""}=router.query
+    const {genre,year="",rating}=router.query
     useEffect(()=>{setPage(1)} ,[year])
 
     useEffect(() => {
@@ -23,13 +23,16 @@ const Page = () => {
         if(!!genre){
             url+=`&genre=${genre}`
         }
+        if(!!rating){
+            url+=`&rating=${rating}`
+        }
         fetch(url)
             .then((res) => res.json())
             .then((data) => {
                 setItems(data.items);
                 setCount(data.count)
             });
-    }, [year,page,genre]);
+    }, [year,page,genre,rating]);
 
     return (
         <>
@@ -44,6 +47,7 @@ const Page = () => {
             </div> */}
             {!!year&& <div className=''>year: {year}</div>}
            {!!genre&& <div className=''>genre: {genre}</div>}
+           {!!rating&& <div className=''>rating: {rating}</div>}
             <div className=''>count: {count}</div>
             <button type="button" onClick={(e)=>{
                     e.preventDefault()

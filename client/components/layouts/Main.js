@@ -1,4 +1,4 @@
-import HeaderSection from "../sections/Header"
+import MovieHeaderSection from "../sections/MovieHeader"
 import Head from "next/head"
 const MainLayout=({children})=>{
 return(
@@ -27,7 +27,7 @@ return(
   <link href="/pattern/css/theme.css" rel="stylesheet" type="text/css" />
 </Head>
   <div className="container">
-   <HeaderSection/>
+   <MovieHeaderSection/>
   </div>
   <main className="container">
       {children}
