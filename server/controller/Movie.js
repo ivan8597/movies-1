@@ -7,8 +7,8 @@ const list = async (req, res,next) => {
       
         const {year,director,rating,title,genre}=req.query
     const criteria = {}
-    if (year) {
-        criteria.year = year
+    if (+year) {
+        criteria.year = +year
     }
     if (director) {
         criteria.directors = director
@@ -37,7 +37,7 @@ const list = async (req, res,next) => {
 }
 const getById = async (req, res,next) => {
     try {
-        console.log(req.params.id)
+        // console.log(req.params.id)
         res.json({
             item: await Movie.findById(req.params.id),
             comments:await Comment.find({movie_id:req.params.id})
